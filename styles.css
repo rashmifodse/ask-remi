@@ -3,7 +3,7 @@
    A briefing-note aesthetic: black "page", neon green highlighter
    ink used the way an editor marks up a page that matters.
    ============================================================ */
-
+  
 :root {
   /* Color */
   --bg: #0b0b0c;
@@ -15,7 +15,7 @@
   --grey-300: #9a9a9c;
   --grey-500: #6b6b6e;
   --grey-700: #3a3a3c;
-  --accent: #B4FF39;       /* neon green — the highlighter */
+  --accent: #b4ff39;       /* neon green — the highlighter */
   --accent-dim: #8fe013;   /* for AA contrast on light backgrounds */
   --accent-soft: rgba(180, 255, 57, 0.12);
 
@@ -192,7 +192,7 @@ p { color: var(--grey-300); margin: 0 0 1.1em; }
 .btn.is-magnetic { transition: transform 0.15s ease-out, background 0.25s var(--ease), color 0.25s var(--ease), border-color 0.25s var(--ease); }
 .btn-ghost {
   border-color: var(--hairline);
-  color: #0b0b0c !important;
+  color: var(--white);
 }
 .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
 
