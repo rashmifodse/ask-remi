@@ -184,7 +184,7 @@ p { color: var(--grey-300); margin: 0 0 1.1em; }
   cursor: pointer;
   transition: transform 0.25s var(--ease), background 0.25s var(--ease), color 0.25s var(--ease), border-color .25s var(--ease);
 }
-.btn-primary {
+
 .btn-primary,
 .post-body .btn-primary {
   background: var(--accent);
