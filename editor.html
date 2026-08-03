@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Editor — Ask Remi</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="editor.css">
+</head>
+<body class="editor-body">
+
+<!-- ============================================================
+     PASSWORD GATE — client-side only. This is a soft lock to keep
+     casual visitors out, not real security (the password is
+     readable in this page's source by anyone who looks). Don't
+     rely on this alone for anything sensitive.
+     ============================================================ -->
+<div class="gate" id="gate">
+  <div class="gate-box">
+    <span class="eyebrow">Private</span>
+    <h1>Ask Remi Editor</h1>
+    <input type="password" id="gate-password" placeholder="Password" autocomplete="off">
+    <button class="btn btn-primary" id="gate-submit">Unlock</button>
+    <div class="gate-error" id="gate-error"></div>
+    <p class="gate-note">This is a light lock for your own convenience, not real security — don't store anything sensitive behind it.</p>
+  </div>
+</div>
+
+<!-- ============================================================
+     EDITOR APP
+     ============================================================ -->
+<div class="editor-app" id="app">
+
+  <div class="editor-topbar">
+    <span class="logo">Ask<span class="dot">.</span>Remi <span style="color:var(--grey-500); font-size:0.7rem; font-family:var(--font-mono); text-transform:uppercase; letter-spacing:.08em;">Editor</span></span>
+    <div class="editor-actions">
+      <button class="btn btn-ghost" id="btn-preview">Preview</button>
+      <button class="btn btn-primary" id="btn-export">Export HTML</button>
+    </div>
+  </div>
+
+  <div class="format-bar">
+    <button data-cmd="bold" title="Bold selected text"><strong>B</strong></button>
+    <button data-cmd="italic" title="Italicize selected text"><em>I</em></button>
+    <button data-cmd="link" title="Turn selected text into a link">🔗</button>
+    <div class="sep"></div>
+    <span class="hint">Select text in any block, then click a button above</span>
+  </div>
+
+  <div class="editor-layout">
+
+    <!-- ---------------- SIDEBAR: block palette ---------------- -->
+    <aside class="editor-sidebar">
+      <h4>Text</h4>
+      <div class="palette-item" draggable="true" data-type="heading1"><span class="ic">H1</span> Heading 1</div>
+      <div class="palette-item" draggable="true" data-type="heading2"><span class="ic">H2</span> Heading 2</div>
+      <div class="palette-item" draggable="true" data-type="heading3"><span class="ic">H3</span> Heading 3</div>
+      <div class="palette-item" draggable="true" data-type="heading4"><span class="ic">H4</span> Heading 4</div>
+      <div class="palette-item" draggable="true" data-type="paragraph"><span class="ic">¶</span> Paragraph</div>
+      <div class="palette-item" draggable="true" data-type="quote"><span class="ic">"</span> Quote</div>
+
+      <h4>Media & Links</h4>
+      <div class="palette-item" draggable="true" data-type="image"><span class="ic">▢</span> Image</div>
+      <div class="palette-item" draggable="true" data-type="linkbutton"><span class="ic">→</span> Link Button</div>
+
+      <h4>Layout</h4>
+      <div class="palette-item" draggable="true" data-type="grid"><span class="ic">▦</span> Grid</div>
+      <div class="palette-item" draggable="true" data-type="table"><span class="ic">▤</span> Table</div>
+    </aside>
+
+    <!-- ---------------- CANVAS ---------------- -->
+    <main class="editor-canvas" id="canvas">
+      <div class="canvas-empty" id="canvas-empty">Drag a block from the left onto this page to start writing — or drop one right here.</div>
+    </main>
+
+    <!-- ---------------- SETTINGS: post metadata ---------------- -->
+    <aside class="editor-settings">
+      <h4>Post details</h4>
+      <div class="field"><label>Title</label><input id="set-title" placeholder="How AI search is changing SEO"></div>
+      <div class="field"><label>URL slug (filename)</label><input id="set-slug" placeholder="how-ai-search-is-changing-seo"></div>
+      <div class="field"><label>Meta description</label><textarea id="set-desc" placeholder="1–2 sentences for Google and social previews"></textarea></div>
+      <div class="field"><label>Category</label><input id="set-category" placeholder="Internet / Money / Tools"></div>
+      <div class="field"><label>Author</label><input id="set-author" value="Remi Grant"></div>
+      <div class="field"><label>Read time</label><input id="set-readtime" placeholder="6 min read"></div>
+      <div class="field"><label>Hero image URL</label><input id="set-heroimg" placeholder="images/your-photo.jpg"></div>
+      <div class="field"><label>Hero image alt text</label><input id="set-heroalt" placeholder="Describe the image for accessibility"></div>
+    </aside>
+
+  </div>
+</div>
+
+<!-- ============================================================
+     EXPORT MODAL
+     ============================================================ -->
+<div class="export-modal" id="export-modal">
+  <div class="export-panel">
+    <h3>Your post is ready</h3>
+    <p style="color:var(--grey-300); font-size:0.85rem;">Download the file, then drop it into your <code>posts/</code> folder. Or copy the code below if you'd rather paste it yourself.</p>
+    <textarea id="export-output" readonly></textarea>
+    <div class="row">
+      <button class="btn btn-primary" id="btn-download">Download File</button>
+      <button class="btn btn-ghost" id="btn-copy">Copy Code</button>
+      <button class="btn btn-ghost" id="btn-close-export">Close</button>
+    </div>
+  </div>
+</div>
+
+<script src="editor.js"></script>
+</body>
+</html>
