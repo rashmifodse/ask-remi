@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- ============================================================
+     SEO — Primary meta tags
+     Edit title/description per your homepage focus keyword.
+     ============================================================ -->
+<title>Ask Remi — Straight Answers, Well Researched</title>
+<meta name="description" content="Ask Remi is an independent blog delivering clear, well-researched answers on the questions people actually search for. No fluff, just useful.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://www.askremi.com/">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Ask Remi">
+<meta property="og:title" content="Ask Remi — Straight Answers, Well Researched">
+<meta property="og:description" content="Clear, well-researched answers on the questions people actually search for.">
+<meta property="og:image" content="https://www.askremi.com/assets/og-cover.jpg">
+<meta property="og:url" content="https://www.askremi.com/">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Ask Remi — Straight Answers, Well Researched">
+<meta name="twitter:description" content="Clear, well-researched answers on the questions people actually search for.">
+<meta name="twitter:image" content="https://www.askremi.com/assets/og-cover.jpg">
+
+<!-- Favicon -->
+<link rel="icon" type="image/png" href="assets/favicon.png">
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="styles.css">
+
+<!-- JSON-LD: Organization / Website -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Ask Remi",
+  "url": "https://www.askremi.com/",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://www.askremi.com/search?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+</head>
+<body>
+
+<!-- ============================================================
+     HEADER
+     ============================================================ -->
+<header class="site-header">
+  <div class="wrap">
+    <a href="index.html" class="logo" aria-label="Ask Remi home">Ask<span class="dot">.</span>Remi</a>
+    <nav class="main-nav" aria-label="Primary">
+      <a href="index.html#latest">Latest</a>
+      <a href="index.html#topics">Topics</a>
+      <a href="about.html">About</a>
+      <a href="index.html#newsletter" class="btn btn-primary">Subscribe</a>
+    </nav>
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
+  </div>
+</header>
+
+<main>
+
+  <!-- ============================================================
+       HERO
+       ============================================================ -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow">Now publishing — Issue 014</span>
+        <h1>Answers worth <span class="mark">trusting</span>,<br>written for people<br>who read past the headline.</h1>
+        <p class="hero-sub">Ask Remi breaks down the questions people actually search for — research, money, tools, and the internet's fine print — into something you can act on in five minutes.</p>
+        <div class="hero-actions">
+          <a href="#latest" class="btn btn-primary">Read the latest</a>
+          <a href="about.html" class="btn btn-ghost">Why Ask Remi</a>
+        </div>
+      </div>
+      <div class="hero-meta">
+        <p class="eyebrow">This week</p>
+        <p>Three new explainers, one deep-dive on AI search visibility, and a reader Q&amp;A on freelance taxes.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FEATURED / LATEST POSTS
+       ============================================================ -->
+  <section class="section" id="latest">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <div>
+          <span class="eyebrow">Latest</span>
+          <h2>Fresh off the desk</h2>
+        </div>
+        <div class="filters" id="topics">
+          <button class="filter-pill active" data-filter="all">All</button>
+          <button class="filter-pill" data-filter="money">Money</button>
+          <button class="filter-pill" data-filter="tools">Tools</button>
+          <button class="filter-pill" data-filter="internet">Internet</button>
+        </div>
+      </div>
+
+      <div class="post-grid featured" data-reveal-group>
+        <article class="card" data-category="internet" data-reveal>
+          <a href="post-template.html" class="card-media" aria-label="Read: How AI search is rewriting SEO">
+            <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=1200&q=80" alt="Laptop displaying analytics dashboard, representing AI search visibility">
+          </a>
+          <div class="card-body">
+            <span class="eyebrow">Internet</span>
+            <h3><a href="post-template.html">How AI search is quietly rewriting the rules of SEO</a></h3>
+            <p class="card-excerpt">Answer engines don't rank pages the way Google once did. Here's what actually earns a citation in 2026.</p>
+            <div class="card-foot"><span>Remi Grant</span><span>7 min read</span></div>
+          </div>
+        </article>
+
+        <article class="card" data-category="money" data-reveal>
+          <a href="post-template.html" class="card-media" aria-label="Read: Freelance taxes explained">
+            <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&q=80" alt="Calculator and paperwork on a desk">
+          </a>
+          <div class="card-body">
+            <span class="eyebrow">Money</span>
+            <h3><a href="post-template.html">Freelance taxes, explained without the jargon</a></h3>
+            <p class="card-excerpt">What to set aside, when to pay it, and the three deductions most new freelancers miss.</p>
+            <div class="card-foot"><span>Remi Grant</span><span>5 min read</span></div>
+          </div>
+        </article>
+
+        <article class="card" data-category="tools" data-reveal>
+          <a href="post-template.html" class="card-media" aria-label="Read: Best note-taking tools compared">
+            <img src="https://images.unsplash.com/photo-1517842645767-c639042777db?w=800&q=80" alt="Open notebook and pen beside a laptop">
+          </a>
+          <div class="card-body">
+            <span class="eyebrow">Tools</span>
+            <h3><a href="post-template.html">We tested 6 note-taking apps. Two are worth your time</a></h3>
+            <p class="card-excerpt">A practical comparison, not a sponsored list — speed, search, and export quality.</p>
+            <div class="card-foot"><span>Remi Grant</span><span>6 min read</span></div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SECONDARY POST GRID
+       ============================================================ -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <div>
+          <span class="eyebrow">Reader favorites</span>
+          <h2>Most revisited</h2>
+        </div>
+      </div>
+      <div class="post-grid" data-reveal-group>
+        <article class="card" data-category="money" data-reveal>
+          <a href="post-template.html" class="card-media">
+            <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=800&q=80" alt="Stack of coins next to a small plant">
+          </a>
+          <div class="card-body">
+            <span class="eyebrow">Money</span>
+            <h3><a href="post-template.html">A no-spreadsheet budget that actually holds up</a></h3>
+            <p class="card-excerpt">Three accounts, one rule, zero guilt spirals.</p>
+            <div class="card-foot"><span>Remi Grant</span><span>4 min read</span></div>
+          </div>
+        </article>
+        <article class="card" data-category="internet" data-reveal>
+          <a href="post-template.html" class="card-media">
+            <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800&q=80" alt="Person typing on a laptop at a desk">
+          </a>
+          <div class="card-body">
+            <span class="eyebrow">Internet</span>
+            <h3><a href="post-template.html">The privacy settings worth changing today</a></h3>
+            <p class="card-excerpt">Fifteen minutes, four apps, meaningfully less data leaking.</p>
+            <div class="card-foot"><span>Remi Grant</span><span>5 min read</span></div>
+          </div>
+        </article>
+        <article class="card" data-category="tools" data-reveal>
+          <a href="post-template.html" class="card-media">
+            <img src="https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=800&q=80" alt="Desk setup with monitor and keyboard">
+          </a>
+          <div class="card-body">
+            <span class="eyebrow">Tools</span>
+            <h3><a href="post-template.html">Is it finally time to switch from spreadsheets?</a></h3>
+            <p class="card-excerpt">A honest framework for when a "real" tool earns its keep.</p>
+            <div class="card-foot"><span>Remi Grant</span><span>6 min read</span></div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       NEWSLETTER CTA
+       ============================================================ -->
+  <section class="section" id="newsletter">
+    <div class="wrap">
+      <div class="newsletter" data-reveal>
+        <div>
+          <span class="eyebrow">Twice a week</span>
+          <h2>Get the next answer before you go looking for it.</h2>
+        </div>
+        <div>
+          <form class="newsletter-form" action="#" method="post">
+            <label class="visually-hidden" for="email">Email address</label>
+            <input id="email" type="email" placeholder="you@email.com" required autocomplete="email">
+            <button type="submit" class="btn btn-primary">Subscribe</button>
+          </form>
+          <p class="newsletter-note">No spam. Unsubscribe anytime. ~10,000 readers.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a href="index.html" class="logo" aria-label="Ask Remi home">Ask<span class="dot">.</span>Remi</a>
+        <p style="margin-top:1rem; max-width:32ch;">Clear, well-researched answers for people who'd rather know than guess.</p>
+      </div>
+      <div>
+        <h4>Topics</h4>
+        <ul>
+          <li><a href="index.html#topics">Money</a></li>
+          <li><a href="index.html#topics">Tools</a></li>
+          <li><a href="index.html#topics">Internet</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="index.html#latest">Latest posts</a></li>
+          <li><a href="index.html#newsletter">Newsletter</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Elsewhere</h4>
+        <ul>
+          <li><a href="#">X / Twitter</a></li>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">RSS</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Ask Remi. All rights reserved.</span>
+      <span>Built for readers, not algorithms.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
