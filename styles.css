@@ -188,7 +188,8 @@ p { color: var(--grey-300); margin: 0 0 1.1em; }
   background: var(--accent);
   color: #0b0b0c;
 }
-.btn-primary:hover { transform: translateY(-2px); background: #c6ff66; }
+.btn-primary:hover { background: #c6ff66; }
+.btn.is-magnetic { transition: transform 0.15s ease-out, background 0.25s var(--ease), color 0.25s var(--ease), border-color 0.25s var(--ease); }
 .btn-ghost {
   border-color: var(--hairline);
   color: var(--white);
@@ -291,9 +292,13 @@ p { color: var(--grey-300); margin: 0 0 1.1em; }
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  transition: transform 0.4s var(--ease), border-color 0.4s var(--ease);
+  transform: perspective(900px) rotateX(var(--ry, 0deg)) rotateY(var(--rx, 0deg)) translateY(var(--ty, 0px));
+  transition: transform 0.15s ease-out, border-color 0.4s var(--ease), box-shadow 0.4s var(--ease);
 }
-.card:hover { transform: translateY(-6px); border-color: var(--grey-700); }
+.card:hover {
+  border-color: var(--grey-700);
+  box-shadow: 0 20px 40px -20px rgba(180, 255, 57, 0.15);
+}
 .card-media {
   aspect-ratio: 16/10;
   background: linear-gradient(135deg, var(--surface), var(--bg-panel));
@@ -470,6 +475,51 @@ p { color: var(--grey-300); margin: 0 0 1.1em; }
   border-top: 1px solid var(--hairline);
   padding: clamp(3rem, 7vw, 5rem) 0;
 }
+
+/* ---------------- Scroll progress bar ---------------- */
+.scroll-progress {
+  position: fixed;
+  top: 0; left: 0;
+  height: 3px;
+  width: 0%;
+  background: linear-gradient(90deg, var(--accent), #eaffb8);
+  box-shadow: 0 0 12px var(--accent-soft);
+  z-index: 100;
+  will-change: width;
+}
+
+/* ---------------- Custom cursor ---------------- */
+.cursor-dot, .cursor-ring {
+  position: fixed;
+  top: 0; left: 0;
+  pointer-events: none;
+  border-radius: 50%;
+  z-index: 99;
+  transform: translate(-50%, -50%);
+  will-change: transform;
+}
+.cursor-dot {
+  width: 6px; height: 6px;
+  background: var(--accent);
+}
+.cursor-ring {
+  width: 34px; height: 34px;
+  border: 1px solid var(--accent);
+  opacity: 0.45;
+  transition: width 0.25s var(--ease), height 0.25s var(--ease), opacity 0.25s var(--ease), background 0.25s var(--ease);
+}
+.cursor-ring.is-active {
+  width: 56px; height: 56px;
+  opacity: 0.9;
+  background: var(--accent-soft);
+}
+/* Hide the custom cursor on touch devices and respect reduced motion */
+@media (pointer: coarse), (prefers-reduced-motion: reduce) {
+  .cursor-dot, .cursor-ring, .scroll-progress { display: none; }
+}
+
+/* ---------------- Parallax hook ---------------- */
+[data-parallax] { will-change: transform; }
 
 /* ---------------- Responsive ---------------- */
 @media (max-width: 900px) {
