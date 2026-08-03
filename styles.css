@@ -185,14 +185,17 @@ p { color: var(--grey-300); margin: 0 0 1.1em; }
   transition: transform 0.25s var(--ease), background 0.25s var(--ease), color 0.25s var(--ease), border-color .25s var(--ease);
 }
 .btn-primary {
+.btn-primary,
+.post-body .btn-primary {
   background: var(--accent);
-  color: #0b0b0c;
+  color: #0b0b0c !important;
   text-decoration: none !important;
-   
 }
-.btn-primary:hover { 
-   background: #c6ff66;
-   color: #0b0b0c !important;
+
+.btn-primary:hover,
+.post-body .btn-primary:hover {
+  background: #c6ff66;
+  color: #0b0b0c !important;
 }
 .btn.is-magnetic { transition: transform 0.15s ease-out, background 0.25s var(--ease), color 0.25s var(--ease), border-color 0.25s var(--ease); }
 .btn-ghost {
