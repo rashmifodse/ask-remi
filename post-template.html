@@ -47,43 +47,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 
-<!-- Lightweight inline styles for the new interactive features (keeps template self-contained) -->
-<style>
-  /* Top reading progress bar */
-  #top-progress {
-    position: fixed; inset: 0 0 auto 0; height: 4px; background: linear-gradient(90deg,#2563eb var(--p,0%), rgba(0,0,0,0.06) 0%); z-index: 9999; transition: --p 0.2s linear;
-  }
-  /* Sidebar / outline */
-  .post-layout { display: grid; grid-template-columns: 1fr 320px; gap: 2.5rem; }
-  .post-sidebar { position: relative; }
-  #post-outline { position: sticky; top: 6rem; border-left: 1px solid #eee; padding-left: 1rem; max-height: calc(100vh - 8rem); overflow:auto; }
-  #post-outline nav { display:flex; flex-direction:column; gap:0.5rem; }
-  #post-outline a { color: #374151; text-decoration:none; font-size:0.95rem; display:flex; gap:0.5rem; align-items:center; }
-  #post-outline a span.index { color:#94a3b8; font-family: 'JetBrains Mono', monospace; width:2.25rem; display:inline-block }
-  #post-outline a.active { font-weight:600; color:#1f2937 }
-  #post-outline a.sub { padding-left:1.25rem; font-size:0.9rem; color:#6b7280 }
-  #post-outline .progress { font-size:0.8rem; color:#64748b; margin-top:0.5rem }
-  /* Mobile drawer and floating outline */
-  .mobile-outline { display:none; position:fixed; right:1rem; top:50%; transform:translateY(-50%); z-index:999; background:#fff; border-radius:999px; box-shadow:0 6px 20px rgba(0,0,0,0.08); padding:0.35rem 0.5rem }
-  .mobile-outline button { background:none;border:none;padding:0.45rem; cursor:pointer }
-  .mobile-drawer { display:none; position:fixed; left:0; right:0; bottom:0; background:#fff; border-top-left-radius:12px; border-top-right-radius:12px; box-shadow:0 -6px 20px rgba(0,0,0,0.12); max-height:60vh; overflow:auto; z-index:10000; padding:1rem; }
-  .drawer-handle { width:36px;height:4px;background:#e5e7eb;border-radius:999px;margin:0 auto 0.5rem }
-  .controls { display:flex; gap:0.5rem; align-items:center }
-  .controls .btn { padding:0.4rem 0.6rem; border-radius:8px; border:1px solid #e6e7eb; background:#fff; cursor:pointer }
-  .toast { position:fixed; right:1rem; bottom:6rem; background:#111; color:#fff; padding:0.6rem 1rem; border-radius:8px; opacity:0; transform:translateY(8px); transition:all .25s; z-index:10001 }
-  .toast.show { opacity:1; transform:translateY(0) }
-  /* Auditor modal */
-  .modal { display:none; position:fixed; inset:0; background:rgba(15,23,42,0.5); align-items:center; justify-content:center; z-index:10002 }
-  .modal .panel { background:#fff; width:min(720px,95%); max-height:80vh; overflow:auto; padding:1rem; border-radius:10px }
-  .audio-controls { display:flex; gap:0.5rem; align-items:center }
-  /* Responsive: collapse sidebar under lg */
-  @media (max-width: 1024px) {
-    .post-layout { grid-template-columns: 1fr; }
-    #post-outline { display:none }
-    .mobile-outline { display:block }
-  }
-</style>
-
 <!-- JSON-LD: Article schema — EDIT to match the post -->
 <script type="application/ld+json">
 {
@@ -117,9 +80,6 @@
 </head>
 <body>
 
-<!-- Top reading progress bar -->
-<div id="top-progress" aria-hidden="true" style="--p:0%"></div>
-
 <header class="site-header">
   <div class="wrap">
     <a href="index.html" class="logo" aria-label="Ask Remi home">Ask<span class="dot">.</span>Remi</a>
@@ -145,25 +105,8 @@
       <div class="post-meta">
         <span>By Remi Grant</span>
         <span>July 28, 2026</span>
-        <span id="read-time">7 min read</span>
+        <span>7 min read</span>
       </div>
-
-      <!-- Article controls (font-size, bookmark, copy link, auditor, audio) -->
-      <div class="controls" style="margin-top:0.75rem">
-        <div class="font-toggle" role="toolbar" aria-label="Font size">
-          <button class="btn" data-size="small">A-</button>
-          <button class="btn" data-size="normal">A</button>
-          <button class="btn" data-size="large">A+</button>
-        </div>
-        <button class="btn" id="bookmark-btn" aria-pressed="false">🔖 Bookmark</button>
-        <button class="btn" id="copy-link">🔗 Copy link</button>
-        <button class="btn" id="auditor-open">🧾 Audit</button>
-        <div class="audio-controls" style="margin-left:0.5rem">
-          <button class="btn" id="audio-play">▶ Read</button>
-          <button class="btn" id="audio-stop">■ Stop</button>
-        </div>
-      </div>
-
       <div class="post-hero-media" data-parallax="0.12">
         <!-- EDIT: hero image src + descriptive alt text -->
         <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=1600&q=80" alt="Laptop showing an analytics dashboard with search performance data">
@@ -177,14 +120,14 @@
       <!-- ============================================================
            POST BODY START — replace everything inside <article>
            ============================================================ -->
-      <article class="post-body" id="post-body">
+      <article class="post-body">
 
-        <p>Search used to be a ranked list. You wrote a page, you earned a position, and traffic followed roughly in proportion to where you landed. That model isn't gone, but it's no longer the [...]</p>
+        <p>Search used to be a ranked list. You wrote a page, you earned a position, and traffic followed roughly in proportion to where you landed. That model isn't gone, but it's no longer the whole game — answer engines now read, summarize, and cite sources directly inside the answer itself.</p>
 
-        <p>That shift changes what "ranking well" even means. A page can drive meaningful traffic without ever showing up as a blue link, and a page that ranks #1 in the old sense can go complete[...]</p>
+        <p>That shift changes what "ranking well" even means. A page can drive meaningful traffic without ever showing up as a blue link, and a page that ranks #1 in the old sense can go completely uncited in an AI-generated answer.</p>
 
         <h2>What actually earns a citation</h2>
-        <p>Across the sites we've tracked, three patterns show up consistently in content that gets pulled into AI answers: it states a clear claim early, it backs that claim with a specific numb[...]</p>
+        <p>Across the sites we've tracked, three patterns show up consistently in content that gets pulled into AI answers: it states a clear claim early, it backs that claim with a specific number or source, and it's structured so a single paragraph can stand on its own if lifted out of context.</p>
 
         <blockquote>The pages winning in AI search aren't the most keyword-optimized — they're the most quotable.</blockquote>
 
@@ -208,7 +151,7 @@
         </div>
 
         <h2>What to actually change this week</h2>
-        <p>Start with your three highest-traffic pages. Rewrite the opening two sentences of each major section so they answer the implied question directly, then add one specific, sourced number[...]</p>
+        <p>Start with your three highest-traffic pages. Rewrite the opening two sentences of each major section so they answer the implied question directly, then add one specific, sourced number per section. <a href="post-template.html">Read our full audit framework</a> for the complete process.</p>
 
         <p>None of this replaces good writing or real expertise — if anything, it rewards both more than the old model did, because vague, padded content is exactly what gets skipped.</p>
 
@@ -218,56 +161,17 @@
            ============================================================ -->
 
       <!-- ============================================================
-           SIDEBAR — share links (edit hrefs to your share intents) + outline
+           SIDEBAR — share links (edit hrefs to your share intents)
            ============================================================ -->
       <aside class="post-sidebar">
         <span class="eyebrow">Share</span>
         <div class="share-list">
           <a href="#" aria-label="Share on X">X / Twitter</a>
           <a href="#" aria-label="Share on LinkedIn">LinkedIn</a>
-          <a href="#" aria-label="Copy link" id="sidebar-copy">Copy link</a>
-        </div>
-
-        <div id="post-outline" aria-label="Article outline" hidden>
-          <div style="display:flex;justify-content:space-between;align-items:center">
-            <strong>On this page</strong>
-            <span id="outline-read">% READ</span>
-          </div>
-          <nav id="outline-nav"></nav>
-          <div class="progress" id="outline-progress">Start reading to see progress</div>
+          <a href="#" aria-label="Copy link">Copy link</a>
         </div>
       </aside>
 
-    </div>
-  </div>
-
-  <!-- Mobile floating outline and drawer -->
-  <div class="mobile-outline" aria-hidden="false">
-    <button id="open-drawer" aria-label="Open outline">☰</button>
-  </div>
-  <div class="mobile-drawer" id="mobile-drawer" hidden>
-    <div class="drawer-handle" id="drawer-handle"></div>
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem">
-      <strong>Outline</strong>
-      <button id="close-drawer">Close</button>
-    </div>
-    <nav id="mobile-outline-nav"></nav>
-  </div>
-
-  <!-- Auditor modal -->
-  <div class="modal" id="auditor" role="dialog" aria-modal="true" aria-hidden="true">
-    <div class="panel">
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem">
-        <h3>AI Citation Auditor</h3>
-        <button id="auditor-close">✕</button>
-      </div>
-      <p>Paste content or use the article below to run a simple extraction-readiness check.</p>
-      <textarea id="auditor-input" style="width:100%;height:120px;margin-bottom:0.5rem"> </textarea>
-      <div style="display:flex;gap:0.5rem;margin-bottom:0.5rem">
-        <button id="auditor-run" class="btn">Run audit</button>
-        <button id="auditor-use-article" class="btn">Use article text</button>
-      </div>
-      <div id="auditor-results" style="font-family:monospace;white-space:pre-wrap"></div>
     </div>
   </div>
 
@@ -358,175 +262,6 @@
   </div>
 </footer>
 
-<div class="toast" id="toast">Link copied</div>
-
 <script src="script.js"></script>
-
-<!-- Inline script that powers TOC, scrollspy, progress, auditor, audio, and controls -->
-<script>
-(function(){
-  // Helper selectors
-  const article = document.getElementById('post-body');
-  const outlineNav = document.getElementById('outline-nav');
-  const postOutline = document.getElementById('post-outline');
-  const outlineRead = document.getElementById('outline-read');
-  const mobileNav = document.getElementById('mobile-outline-nav');
-  const mobileDrawer = document.getElementById('mobile-drawer');
-  const openDrawer = document.getElementById('open-drawer');
-  const closeDrawer = document.getElementById('close-drawer');
-  const topProgress = document.getElementById('top-progress');
-  const toast = document.getElementById('toast');
-
-  // Build outline from H2/H3
-  function buildOutline(){
-    const headings = article.querySelectorAll('h2, h3');
-    if(!headings.length) return;
-    outlineNav.innerHTML = '';
-    mobileNav.innerHTML = '';
-    headings.forEach((h, i) =>{
-      if(!h.id) h.id = 'section-' + i + '-' + slugify(h.textContent);
-      const a = document.createElement('a');
-      a.href = '#' + h.id;
-      a.dataset.target = h.id;
-      const idx = document.createElement('span'); idx.className='index';
-      idx.textContent = (h.tagName==='H2') ? (i+1)+'.' : '\u2022';
-      a.appendChild(idx);
-      const txt = document.createTextNode(' ' + h.textContent);
-      a.appendChild(txt);
-      if(h.tagName==='H3') a.classList.add('sub');
-      outlineNav.appendChild(a);
-
-      const am = a.cloneNode(true);
-      mobileNav.appendChild(am);
-    });
-    postOutline.hidden = false;
-  }
-
-  function slugify(s){ return s.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,''); }
-
-  // Scrollspy
-  let headings = [];
-  function refreshHeadings(){ headings = Array.from(article.querySelectorAll('h2, h3')); }
-
-  function onScroll(){
-    const fromTop = window.scrollY + 120; // offset for sticky header
-    let current = headings[0];
-    for(const h of headings){ if(h.offsetTop <= fromTop) current = h; }
-    // highlight
-    const allLinks = outlineNav.querySelectorAll('a');
-    allLinks.forEach(l => l.classList.toggle('active', l.dataset.target === current.id));
-    const mobLinks = mobileNav.querySelectorAll('a');
-    mobLinks.forEach(l => l.classList.toggle('active', l.dataset.target === current.id));
-
-    // reading progress
-    const rect = article.getBoundingClientRect();
-    const total = article.scrollHeight - window.innerHeight;
-    const scrolled = window.scrollY - (article.offsetTop - 60);
-    const pct = Math.max(0, Math.min(100, Math.round((scrolled / total) * 100)));
-    topProgress.style.setProperty('--p', pct+'%');
-    outlineRead.textContent = pct + '% READ';
-    const prog = document.getElementById('outline-progress');
-    if(prog) prog.textContent = pct + '% through this article';
-  }
-
-  // Smooth offset scrolling for anchor clicks
-  function attachNavClicks(){
-    [outlineNav, mobileNav].forEach(nav=>{
-      nav.addEventListener('click', e=>{
-        const a = e.target.closest('a'); if(!a) return;
-        e.preventDefault();
-        const el = document.getElementById(a.dataset.target);
-        const offset = 80; // header offset
-        const top = el.getBoundingClientRect().top + window.scrollY - offset;
-        window.scrollTo({top, behavior:'smooth'});
-        if(!mobileDrawer.hidden){ mobileDrawer.hidden = true; }
-      });
-    });
-  }
-
-  // Mobile drawer handlers
-  if(openDrawer) openDrawer.addEventListener('click', ()=>{ mobileDrawer.hidden = false; });
-  if(closeDrawer) closeDrawer.addEventListener('click', ()=>{ mobileDrawer.hidden = true; });
-
-  // Copy link + toast
-  function copyLink(text){ navigator.clipboard.writeText(text).then(()=>{
-    toast.textContent = 'Link copied'; toast.classList.add('show'); setTimeout(()=>toast.classList.remove('show'),2000);
-  }); }
-  document.getElementById('copy-link').addEventListener('click', ()=> copyLink(window.location.href));
-  document.getElementById('sidebar-copy').addEventListener('click', ()=> copyLink(window.location.href));
-
-  // Bookmark (localStorage)
-  const bookmarkBtn = document.getElementById('bookmark-btn');
-  function updateBookmark(){ const key = location.pathname; const is = localStorage.getItem('book:'+key); bookmarkBtn.setAttribute('aria-pressed', !!is); bookmarkBtn.textContent = (is? '🔖 Bookmarked':'🔖 Bookmark'); }
-  bookmarkBtn.addEventListener('click', ()=>{ const key = location.pathname; if(localStorage.getItem('book:'+key)){ localStorage.removeItem('book:'+key); } else { localStorage.setItem('book:'+key, JSON.stringify({title:document.title, url:location.href, date:Date.now()})); } updateBookmark(); });
-  updateBookmark();
-
-  // Font size toggle
-  document.querySelectorAll('.font-toggle [data-size]').forEach(btn=> btn.addEventListener('click', ()=>{
-    const s = btn.dataset.size;
-    if(s==='small') document.documentElement.style.fontSize = '14px';
-    if(s==='normal') document.documentElement.style.fontSize = '';
-    if(s==='large') document.documentElement.style.fontSize = '18px';
-  }));
-
-  // Auditor: simple heuristics
-  const auditor = document.getElementById('auditor');
-  const auditorInput = document.getElementById('auditor-input');
-  const auditorResults = document.getElementById('auditor-results');
-  document.getElementById('auditor-open').addEventListener('click', ()=>{ auditor.style.display='flex'; auditor.setAttribute('aria-hidden','false'); });
-  document.getElementById('auditor-close').addEventListener('click', ()=>{ auditor.style.display='none'; auditor.setAttribute('aria-hidden','true'); });
-  document.getElementById('auditor-use-article').addEventListener('click', ()=>{ auditorInput.value = article.innerText.trim(); });
-  document.getElementById('auditor-run').addEventListener('click', runAudit);
-
-  function runAudit(){
-    const text = (auditorInput.value || '').trim();
-    if(!text){ auditorResults.textContent = 'No text provided.'; return; }
-    const sentences = text.split(/[\.\?!]\s+/).filter(Boolean);
-    const issues = [];
-    // check: first sentences for sections
-    const sectionEls = Array.from(article.querySelectorAll('h2'));
-    sectionEls.forEach((h, idx)=>{
-      const p = h.nextElementSibling && h.nextElementSibling.tagName==='P' ? h.nextElementSibling.textContent.trim() : '';
-      if(!p) issues.push(`Section "${h.textContent}" has no opening paragraph.`);
-      else if(p.split(' ').length < 12) issues.push(`Section "${h.textContent}" opening paragraph might be too short for extraction (found ${p.split(' ').length} words).`);
-    });
-    // check for numeric claims without citations
-    const numericClaims = sentences.filter(s => /\d{1,4}/.test(s) && !/\b(http|https|doi|source|cite|\[|\()/i.test(s));
-    if(numericClaims.length) issues.push(`Found ${numericClaims.length} numeric claim(s) that may need explicit citation.`);
-    // check for 'study' or 'research' words
-    const signals = sentences.filter(s => /study|research|survey|report|analysis/i.test(s));
-    if(signals.length) issues.push(`Found ${signals.length} sentences that reference studies — consider adding explicit sources.`);
-
-    auditorResults.textContent = (issues.length? issues.join('\n') : 'No obvious issues found — good job!');
-  }
-
-  // Simple audio reader using SpeechSynthesis
-  const audioPlay = document.getElementById('audio-play');
-  const audioStop = document.getElementById('audio-stop');
-  let synthUtter = null;
-  audioPlay.addEventListener('click', ()=>{
-    if(window.speechSynthesis && !synthUtter){
-      const t = article.innerText.trim();
-      synthUtter = new SpeechSynthesisUtterance(t);
-      synthUtter.rate = 1; synthUtter.pitch = 1;
-      synthUtter.onend = ()=> { synthUtter = null; };
-      window.speechSynthesis.speak(synthUtter);
-    }
-  });
-  audioStop.addEventListener('click', ()=>{ if(window.speechSynthesis){ window.speechSynthesis.cancel(); synthUtter=null; } });
-
-  // Initialize and wire events
-  buildOutline();
-  refreshHeadings();
-  attachNavClicks();
-  document.addEventListener('scroll', onScroll, {passive:true});
-  window.addEventListener('resize', ()=>{ refreshHeadings(); onScroll(); });
-  onScroll();
-
-  // expose a small function for tests
-  window.__postTools = { buildOutline, runAudit };
-})();
-</script>
-
 </body>
 </html>
